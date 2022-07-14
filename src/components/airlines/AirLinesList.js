@@ -6,17 +6,51 @@ const AirLinesList = () => {
   console.log(data)
   return (
     <div className='container'>
-      <div className='header'>
-        <h2>AirLine List API</h2>
-      </div> 
-      <div className='error'></div>
-      <div className='loading'></div>
-      <div className='data-list'></div>
+      <header>
+        <div className='header'>
+          <h2>Airline List API</h2>
+        </div>
+      </header>
+      <main>
+      { 
+        isError &&  <div className='error'>          
+          <span>Opps! Something went wrong</span>
+        </div>
+      } 
 
+      { 
+        isLoading && 
+        <div className='loading'>
+          <span>Please wait...</span>
+        </div>
+      }
 
-        {/* { isLoading && <div>Please wait...</div> }
-        { isError && <div>{isError}</div> }
-        { !isLoading && !isError && <pre>{JSON.stringify(data)}</pre> } */}
+      { 
+        !isLoading && !isError && data.length === 0 &&
+        <div className='nodata'>
+          <span>No record to display</span>
+        </div>
+      }
+
+      {
+        !isLoading && data.length > 0 &&
+        <div className='data-list'>
+          {
+            data.map((airline,index) => {
+              return <div className='data-item' key={index}>
+                <div className='data-item--flag'>
+                  {/* <img src={airline.logo} alt={airline.country} className='data-item--logo'/> */}
+                </div>
+                <div className='data-item--details'>
+                  <span>{airline.name}</span>
+                </div>
+              </div>
+            })
+          }
+          
+        </div>
+      }
+      </main>
     </div>    
   )
 }

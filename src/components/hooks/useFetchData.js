@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const useFetchData = (url) => {
     const [isLoading,setIsLoading] = useState(true)
@@ -6,7 +6,9 @@ const useFetchData = (url) => {
     const [data,setData] = useState([])
 
     useEffect(() => {
-        fetch(url)
+        fetch(url,{
+            mode:"cors"
+        })
         .then(response => response.json())
         .then(data => {
             setIsLoading(false)
