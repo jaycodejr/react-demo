@@ -11,7 +11,7 @@ const AirLinesList = () => {
           <h2>Airline List API</h2>
         </div>
       </header>
-      <main>
+      <div className='main'>
       { 
         isError &&  <div className='error'>          
           <span>Opps! Something went wrong</span>
@@ -50,7 +50,7 @@ const AirLinesList = () => {
           
         </div>
       }
-      </main>
+      </div>
     </div>    
   )
 }
